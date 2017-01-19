@@ -18,7 +18,7 @@ def metadataTemplateCreation(data,templatename="maps.tmpl"):
     resultDir = os.path.join(basedir, 'oulib_tasks/', task_id)
     os.makedirs(resultDir)
     # load template
-    templateLoader = jinja2.FileSystemLoader( searchpath="/" )
+    templateLoader = jinja2.FileSystemLoader( searchpath="./" )
     templateEnv = jinja2.Environment( loader=templateLoader )
     template = template = templateEnv.get_template("templates/{0}".format(templatename))
     outputXML = template.render(data)
