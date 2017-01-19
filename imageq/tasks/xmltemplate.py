@@ -4,14 +4,12 @@ from celery.exceptions import Ignore
 from celery.task.sets import TaskSet
 #from dockertask import docker_task
 from subprocess import call,STDOUT
-import requests
-import os, hashlib, bagit
-from pymongo import MongoClient
-import boto3,shutil
+import requests,os
 import jinja2
 #from pandas import read_csv
 #Default base directory 
 basedir="/data/web_data/static"
+hostname="https://cc.lib.ou.edu"
 
 @task()
 def metadataTemplateCreation(data,templatename="maps.tmpl"):
@@ -26,4 +24,4 @@ def metadataTemplateCreation(data,templatename="maps.tmpl"):
     outputXML = template.render(data)
     with open(os.path.join(resultDir,"mytemplate.xml"),'w') as out:
         out.write(outputXML)
-    return "http://dev.libraries.ou.edu/oulib_tasks/{0}".format(task_id)
+    return "{0}/oulib_tasks/{1}".format(hostname,task_id)
