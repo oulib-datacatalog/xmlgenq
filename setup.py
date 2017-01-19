@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 setup(name='imageq',
       version='0.0',
       packages= find_packages(),
-      package_data={'imageq':['imageq/tasks/templates/*.tmpl']},
+      package_data={'imageq':['tasks/templates/*.tmpl','imageq/tasks/templates/*.tmpl']},
       install_requires=[
           'celery==3.1.22',
           'pymongo==3.2.1',
