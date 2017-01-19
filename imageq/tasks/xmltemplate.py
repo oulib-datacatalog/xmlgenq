@@ -20,7 +20,7 @@ def metadataTemplateCreation(data,templatename="maps.tmpl"):
     # load template
     templateLoader = jinja2.FileSystemLoader( searchpath="/" )
     templateEnv = jinja2.Environment( loader=templateLoader )
-    template = template = templateEnv.get_template("template/{0}".format(templatename))
+    template = template = templateEnv.get_template("templates/{0}".format(templatename))
     outputXML = template.render(data)
     with open(os.path.join(resultDir,"mytemplate.xml"),'w') as out:
         out.write(outputXML)
