@@ -6,8 +6,8 @@ from tempfile import NamedTemporaryFile
 import os
 
 #Default base directory
-basedir = "/data/static/"
-hostname = "localhost"
+basedir = "/data/"
+hostname = "https://cc.lib.ou.edu"
 
 #imagemagick needs to be installed within the docker container
 
