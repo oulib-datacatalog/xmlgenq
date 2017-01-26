@@ -11,6 +11,7 @@
     {% for g in genre  %}
       {% set att =' ' %}
       {% for k, v in g['attributes'].iteritems() %}  
+        {{ k }}={{v}}
         {% set   att = att + k + '=' + '"' + v + '" ' %}
       {% endfor %}
       <genre {{ att }} >{{ g['value'] }}</genre>
