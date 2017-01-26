@@ -14,7 +14,7 @@
         {{ k }}={{v}}
         {% set   atts = '{0} {1}="{2}"'.format(atts,k,v)  %}
       {% endfor %}
-      <genre {{ att }} >{{ g['value'] }}</genre>
+      <genre {{ atts }} >{{ g['value'] }}</genre>
     {% endfor %}
     {% for item in subject %}
       <subject>
