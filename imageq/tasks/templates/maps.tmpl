@@ -9,10 +9,10 @@
         <note>{{ item }}</note>
     {% endfor %}
     {% for g in genre  %}
-      {% set att ='' %}
+      {% set atts ='' %}
       {% for k, v in g['attributes'].iteritems() %}  
         {{ k }}={{v}}
-        {% set   att = {{ k ~ '=' ~ '"' ~ v ~ '"' }}  %}
+        {% set   atts = '{0} {1}="{2}"'.format(atts,k,v)  %}
       {% endfor %}
       <genre {{ att }} >{{ g['value'] }}</genre>
     {% endfor %}
