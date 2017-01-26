@@ -1,14 +1,42 @@
 from celery.task import task
 from dockertask import docker_task
-from subprocess import check_call
-from tempfile import NamedTemporaryFile
 from PIL import Image
+from subprocess import check_call, check_output
+from tempfile import NamedTemporaryFile
+import os
+
+#Default base directory
+basedir = "/data/"
+hostname = "https://cc.lib.ou.edu"
+
+#imagemagick needs to be installed within the docker container
 
 
-#Default base directory 
-#basedir="/data/static/"
+def _processimage(inpath, outpath, outformat="TIFF", filter="ANTIALIAS", scale=None, crop=None):
+    """
+    Internal function to create image derivatives
+    """
 
-#libtiff-tools needs to be installed within the docker container
+    try:
+        image = Image.open(inpath)
+    except (IOError, OSError):
+        # workaround for Pillow not handling 16bit sRGB images
+        if "16-bit sRGB" in check_output(("identify", inpath)):
+            with NamedTemporaryFile() as tmpfile:
+                check_call(("convert", inpath, "-depth", "8", tmpfile.name))
+                image = Image.open(tmpfile.name)
+        else:
+            raise Exception
+
+    if crop:
+        image = image.crop(crop)
+
+    if scale:
+        imagefilter = getattr(Image, filter.upper())
+        size = [x * scale for x in image.size]
+        image.thumbnail(size, imagefilter)
+
+    image.save(outpath, outformat)
 
 
 @task()
@@ -25,24 +53,18 @@ def processimage(inpath, outpath, outformat="TIFF", filter="ANTIALIAS", scale=No
       crop - list of coordinates to crop from - i.e. [10, 10, 200, 200]
     """
 
-    try:
-        image = Image.open(inpath)
-    except (IOError, OSError):
-        # workaround for Pillow unrecognized tiff image
-        if inpath.split(".")[-1].upper() in ["TIF", "TIFF"]:
-            with NamedTemporaryFile() as tmpfile:
-                check_call(("tiff2rgba", inpath, tmpfile.name))
-                image = Image.open(tmpfile.name)
-        else:
-            raise Exception
+    task_id = str(processimage.request.id)
+    #create Result Directory
+    resultpath = os.path.join(basedir, 'oulib_tasks/', task_id)
+    os.makedirs(resultpath)
 
-    if crop:
-        image = image.crop(crop)
+    _processimage(inpath=os.path.join(basedir, inpath),
+                  outpath=os.path.join(basedir, outpath),
+                  outformat=outformat,
+                  filter=filter,
+                  scale=scale,
+                  crop=crop
+                  )
 
-    if scale:
-        imagefilter = getattr(Image, filter.upper())
-        size = [x * scale for x in image.size]
-        image.thumbnail(size, imagefilter)
-    image.save(outpath, outformat)
-    return "Success"
-    
+    return "{0}/oulib_tasks/{1}".format(hostname, task_id)
+

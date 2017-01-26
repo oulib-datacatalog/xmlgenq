@@ -8,6 +8,13 @@
     {% for item in note %}
         <note>{{ item }}</note>
     {% endfor %}
+    {% for g in genre  % }
+      {% set att = ' ' %}
+      {% for k, v in g['attributes'].iteritems() %}  
+        {% set att = att + k + '="'+ v +'" ' %}
+      {% endfor %}
+      <genre {{ att }} >{{ g['value'] }}</genre>
+    {% endfor %}
     {% for item in subject %}
       <subject>
       {% if item['geographicCode'] is defined %}
