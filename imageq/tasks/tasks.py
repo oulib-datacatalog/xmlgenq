@@ -20,8 +20,8 @@ def _processimage(inpath, outpath, outformat="TIFF", filter="ANTIALIAS", scale=N
     try:
         image = Image.open(inpath)
     except (IOError, OSError):
-        # workaround for Pillow not handling 16bit sRGB images
-        if "16-bit sRGB" in check_output(("identify", inpath)):
+        # workaround for Pillow not handling 16bit images
+        if "16-bit" in check_output(("identify", inpath)):
             with NamedTemporaryFile() as tmpfile:
                 check_call(("convert", inpath, "-depth", "8", tmpfile.name))
                 image = Image.open(tmpfile.name)
@@ -59,7 +59,7 @@ def processimage(inpath, outpath, outformat="TIFF", filter="ANTIALIAS", scale=No
     os.makedirs(resultpath)
 
     _processimage(inpath=os.path.join(basedir, inpath),
-                  outpath=os.path.join(basedir, outpath),
+                  outpath=os.path.join(resultpath, outpath),
                   outformat=outformat,
                   filter=filter,
                   scale=scale,
