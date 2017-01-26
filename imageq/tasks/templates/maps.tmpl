@@ -8,7 +8,7 @@
     {% for item in note %}
         <note>{{ item }}</note>
     {% endfor %}
-    {% for g in genre  % }
+    {% for g in genre  %}
       {% set att = ' ' %}
       {% for k, v in g['attributes'].iteritems() %}  
         {% set att = att + k + '="'+ v +'" ' %}
