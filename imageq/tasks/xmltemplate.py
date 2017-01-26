@@ -13,6 +13,17 @@ hostname="https://cc.lib.ou.edu"
 
 @task()
 def metadataTemplateCreation(data,templatename="maps.tmpl",outname=None):
+    """
+    Metadata XML creation
+
+    args: data
+    kwargs:
+        templatename - Default = maps.tmpl (name of template must be added to github template directory)
+        outname - Default = None Will change templatename to .xml or use outname provided
+
+    Github repo: https://github.com/oulib-datacatalog/imageq
+    """ 
+    
     task_id = str(metadataTemplateCreation.request.id)
     #create Result Directory
     resultDir = os.path.join(basedir, 'oulib_tasks/', task_id)
