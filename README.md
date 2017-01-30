@@ -1,4 +1,4 @@
-Cybercom Queue
+Cybercom Queue for XML Generation
 ====
 
-Example Cybercom task queue. Good starting repo for various asynchronous tasks. 
+This queue is for the creation of metadata xml files for OU Libraries.
