@@ -16,12 +16,12 @@ def metadataTemplateCreation(data,templatename="maps.tmpl",outname=None):
     """
     Metadata XML creation
 
-    args: data
+    args: data - data that corresponds to template.
     kwargs:
-        templatename - Default = maps.tmpl (name of template must be added to github template directory)
+        templatename - Default = maps.tmpl (name of template must correspond to template added to github template directory)
         outname - Default = None Will change templatename to .xml or use outname provided
 
-    Github repo: https://github.com/oulib-datacatalog/imageq
+    Github repo: https://github.com/oulib-datacatalog/xmlgenq
     """ 
     
     task_id = str(metadataTemplateCreation.request.id)
