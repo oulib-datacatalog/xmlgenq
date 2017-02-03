@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modsCollection xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-6.xsd" xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <mods version="3.6">
+
+
+    {# Title Info #}
+
+    <titleInfo>
+      <title>{{ title }}</title>
+    {% if item['field_subtitle'] is defined %}
+      <subtitle>{{ field_subtitle}}</subtitle>
+    {% endif %}
+    </titleInfo>
+    <titleInfo type="uniform">
+    {% if item['field_uniform'] is defined %}
+       <title>{{ field_uniform }}</title>
+    {% endif %}
+    </titleInfo>
+    <titleInfo type ="alternative">
+    {% if item['field_alternative'] is defined %}
+      {% for altitem in item['alternative'] %}
+        <title>{{ field_alternative }}</title>
+      {% endif %}  at
+    </titleInfo>
+
+
+    {# Name/Creator Info #}
+
+    {% for name in item['field_creator_info'] %}
+      {% if item['field_creator_person_lcnaf'] is defined %}
+      <name authority = "lcnaf" type = "personal">
+        <namePart>{{ field_creator_person_lcnaf }}<namePart>
+        <role>
+          <roleTerm type="text">{{ field_creator_role }}</roleTerm>
+        </role
+      </name>
+      {% if item['field_creator_person_local'] is defined %}
+      <name authority ="local" type = "personal">
+        <namePart>{{ field_creator_local_ }}</namePart>
+        <role>
+          <roleTerm type="text">{{ field_creator_role }}</roleTerm>
+        </role
+      </name>
+      {% if item['field_creator_corporate_name_lcnaf_'] is defined %}
+      <name authority = "lcnaf" type="corporate">
+        <namePart>{{ field_creator_corporate_name_lcnaf_ }}</namePart>
+      </name>
+      {% if item['field_creator_corporate_name_local_'] is defined %}
+      <name authority = "lcnaf" type="corporate">
+        <namePart>{{ field_creator_corporate_name_local_ }}</namePart>
+      </name>
+      {% if item['field_conference_name'] is defined %}
+      <name type ="conference">
+        <namePart>{{ field_conference_name }}</namePart>
+      </name>
+    {% endif %}
+
+
+    <typeOfResource>{{ typeResource }}</typeOfResource>
+    {% for item in note %}
+        <note>{{ item }}</note>
+    {% endfor %}
+    {% for item in subject %}
+      <subject>
+      {% if item['geographicCode'] is defined %}
+        <geographicCode authority="marcgac">n-us-ok</geographicCode>
+      {% endif %}
+      {% if item['cartographics'] is defined %}
+        {% for cartitem in item['cartographics'] %}
+          {% if cartitem['scale'] is defined %}
+            <scale>{{ cartitem['scale'] }}</scale>
+          {% endif %}
+          {% if cartitem['scale'] is defined %}
+            <projection>{{ cartitem['projection'] }}</projection>
+          {% endif %}
+
+        {% endfor %}
+      {% endif %}
+      </subject>
+    {% endfor %}
+   </mods>
+</modsCollection>
+<data>{"title":"","typeResource":"","note":[],"subject"}</data>
