@@ -8,7 +8,7 @@
     <titleInfo>
       <title>{{ title }}</title>
     {% if item['field_subtitle'] is defined %}
-      <subtitle>{{ field_subtitle}}</subtitle>
+      <subtitle>{{ field_subtitle }}</subtitle>
     {% endif %}
     </titleInfo>
     <titleInfo type="uniform">
@@ -20,7 +20,8 @@
     {% if item['field_alternative'] is defined %}
       {% for altitem in item['alternative'] %}
         <title>{{ field_alternative }}</title>
-      {% endif %}  at
+      {% endfor %}
+    {% endif %}
     </titleInfo>
 
 
@@ -29,11 +30,12 @@
     {% for name in item['field_creator_info'] %}
       {% if item['field_creator_person_lcnaf'] is defined %}
       <name authority = "lcnaf" type = "personal">
-        <namePart>{{ field_creator_person_lcnaf }}<namePart>
+        <namePart>{{ field_creator_person_lcnaf }}</namePart>
         <role>
           <roleTerm type="text">{{ field_creator_role }}</roleTerm>
         </role
       </name>
+      {% endif %}
       {% if item['field_creator_person_local'] is defined %}
       <name authority ="local" type = "personal">
         <namePart>{{ field_creator_local_ }}</namePart>
@@ -41,19 +43,61 @@
           <roleTerm type="text">{{ field_creator_role }}</roleTerm>
         </role
       </name>
+      {% endif %}
       {% if item['field_creator_corporate_name_lcnaf_'] is defined %}
       <name authority = "lcnaf" type="corporate">
         <namePart>{{ field_creator_corporate_name_lcnaf_ }}</namePart>
       </name>
+      {% endif %}
       {% if item['field_creator_corporate_name_local_'] is defined %}
       <name authority = "lcnaf" type="corporate">
         <namePart>{{ field_creator_corporate_name_local_ }}</namePart>
       </name>
+      {% endif %}
       {% if item['field_conference_name'] is defined %}
       <name type ="conference">
         <namePart>{{ field_conference_name }}</namePart>
       </name>
-    {% endif %}
+      {% endif %}
+
+
+      {# origin/publication Info #}
+
+      <originInfo eventType = "creation">
+        <place>
+          <placeTerm type="text">{{ field_origin_info }}</placeTerm>
+        </place>
+        <dateCreated>{{ field_date_created }}</dateCreated>
+      </originInfo>
+      {% if item['field_place_term'] is defined %}
+      <originInfo type = "publication">
+        <place>
+          <placeTerm type="text"> {{ field_place_term }} </placeTerm>
+        </place>
+        {% endif %}
+        {% if item['field_publisher'] is defined %}
+        <publisher>{{ field_publisher }}</publisher>
+        {% endif %}
+        {% if item['field_date_published'] is defined %}
+        <dateIssued>{{ field_date }}</dateIssued>
+        {% endif %}
+        {% if item['field_edition'] is defined %}
+        <edition>{{ field_edition }}</edition>
+        {% endif %}
+        {% if item['field_issuance'] is defined %}
+        <issuance>{{ field_issuance }}</issuance>
+        {% endif %}
+      </originInfo>
+
+
+
+
+
+
+
+
+
+
 
 
     <typeOfResource>{{ typeResource }}</typeOfResource>
