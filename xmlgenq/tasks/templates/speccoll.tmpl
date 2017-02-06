@@ -61,7 +61,7 @@
       {% endif %}
 
 
-      {# origin/publication Info #}
+      {# Origin/Publication Info #}
 
       <originInfo eventType = "creation">
         <place>
@@ -89,6 +89,11 @@
         {% endif %}
       </originInfo>
 
+      {# Type Of Resource #}
+      <typeOfResource>{{ field_resource_type}}</typeOfResource>
+
+      {# Genre #}
+      <genre authority = "marcgt">{{ field_genre }}</genre>
 
 
 
@@ -99,8 +104,6 @@
 
 
 
-
-    <typeOfResource>{{ typeResource }}</typeOfResource>
     {% for item in note %}
         <note>{{ item }}</note>
     {% endfor %}
