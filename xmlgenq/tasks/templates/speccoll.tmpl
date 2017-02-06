@@ -95,6 +95,16 @@
       {# Genre #}
       <genre authority = "marcgt">{{ field_genre }}</genre>
 
+      {# Physical Description #}
+      <physicalDescription>
+        <extent>
+          {{ field_extent }}
+          {% if item['field_physical_details'] is defined %}{{field_physical_details}}{% endif %}
+          {% if item['field_dimensions'] is defined %}{{field_dimensions}}{% endif %}
+          {% if item['field_details'] is defined %} {{ field_detials }}{% endif %}
+          {% if item['field_version'] is defined %} {{ field_version }} {% endif %}
+        </extent>
+      </physicalDescription>
 
 
 
