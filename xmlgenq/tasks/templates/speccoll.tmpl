@@ -106,35 +106,22 @@
         </extent>
       </physicalDescription>
 
+      {# Language #}
+      <language>
+        <languageTerm type= "text">{{ field_language }}</languageTerm>
+      </language>
 
+      {# Abstract #}
+      <abstract>{{ field_abstract }} </abstract>
 
-
-
-
-
-
-
-    {% for item in note %}
-        <note>{{ item }}</note>
-    {% endfor %}
-    {% for item in subject %}
-      <subject>
-      {% if item['geographicCode'] is defined %}
-        <geographicCode authority="marcgac">n-us-ok</geographicCode>
+      {# Table of Contents #}
+      {% if item['field_table_of_contents'] is defined %}
+      <tableofContents>{{ field_table_of_contents }}</tableofContents>
       {% endif %}
-      {% if item['cartographics'] is defined %}
-        {% for cartitem in item['cartographics'] %}
-          {% if cartitem['scale'] is defined %}
-            <scale>{{ cartitem['scale'] }}</scale>
-          {% endif %}
-          {% if cartitem['scale'] is defined %}
-            <projection>{{ cartitem['projection'] }}</projection>
-          {% endif %}
 
-        {% endfor %}
-      {% endif %}
-      </subject>
-    {% endfor %}
+
+
+
    </mods>
 </modsCollection>
 <data>{"title":"","typeResource":"","note":[],"subject"}</data>
