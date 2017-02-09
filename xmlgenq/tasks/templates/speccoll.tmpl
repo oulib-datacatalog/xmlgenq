@@ -7,17 +7,17 @@
 
     <titleInfo>
       <title>{{ title }}</title>
-    {% if item['field_subtitle'] is defined %}
+    {% if field_subtitle is defined %}
       <subtitle>{{ field_subtitle }}</subtitle>
     {% endif %}
     </titleInfo>
     <titleInfo type="uniform">
-    {% if item['field_uniform'] is defined %}
+    {% if field_uniform is defined %}
        <title>{{ field_uniform }}</title>
     {% endif %}
     </titleInfo>
     <titleInfo type ="alternative">
-    {% if item['field_alternative'] is defined %}
+    {% if field_alternative is defined %}
       {% for altitem in item['alternative'] %}
         <title>{{ field_alternative }}</title>
       {% endfor %}
@@ -28,7 +28,7 @@
     {# Name/Creator Info #}
 
     {% for name in item['field_creator_info'] %}
-      {% if item['field_creator_person_lcnaf'] is defined %}
+      {% if field_creator_person_lcnaf is defined %}
       <name authority = "lcnaf" type = "personal">
         <namePart>{{ field_creator_person_lcnaf }}</namePart>
         <role>
@@ -36,7 +36,7 @@
         </role
       </name>
       {% endif %}
-      {% if item['field_creator_person_local'] is defined %}
+      {% if field_creator_person_local is defined %}
       <name authority ="local" type = "personal">
         <namePart>{{ field_creator_local_ }}</namePart>
         <role>
@@ -44,17 +44,17 @@
         </role
       </name>
       {% endif %}
-      {% if item['field_creator_corporate_name_lcnaf_'] is defined %}
+      {% if field_creator_corporate_name_lcnaf_ is defined %}
       <name authority = "lcnaf" type="corporate">
         <namePart>{{ field_creator_corporate_name_lcnaf_ }}</namePart>
       </name>
       {% endif %}
-      {% if item['field_creator_corporate_name_local_'] is defined %}
+      {% if field_creator_corporate_name_local_ is defined %}
       <name authority = "lcnaf" type="corporate">
         <namePart>{{ field_creator_corporate_name_local_ }}</namePart>
       </name>
       {% endif %}
-      {% if item['field_conference_name'] is defined %}
+      {% if field_conference_name is defined %}
       <name type ="conference">
         <namePart>{{ field_conference_name }}</namePart>
       </name>
@@ -71,22 +71,22 @@
         </place>
         <dateCreated>{{ field_date_created }}</dateCreated>
       </originInfo>
-      {% if item['field_place_term'] is defined %}
+      {% if field_place_term is defined %}
       <originInfo type = "publication">
         <place>
           <placeTerm type="text"> {{ field_place_term }} </placeTerm>
         </place>
         {% endif %}
-        {% if item['field_publisher'] is defined %}
+        {% if field_publisher is defined %}
         <publisher>{{ field_publisher }}</publisher>
         {% endif %}
-        {% if item['field_date_published'] is defined %}
+        {% if field_date_published is defined %}
         <dateIssued>{{ field_date }}</dateIssued>
         {% endif %}
-        {% if item['field_edition'] is defined %}
+        {% if field_edition is defined %}
         <edition>{{ field_edition }}</edition>
         {% endif %}
-        {% if item['field_issuance'] is defined %}
+        {% if field_issuance is defined %}
         <issuance>{{ field_issuance }}</issuance>
         {% endif %}
       </originInfo>
@@ -101,10 +101,10 @@
       <physicalDescription>
         <extent>
           {{ field_extent }}
-          {% if item['field_physical_details'] is defined %}{{field_physical_details}}{% endif %}
-          {% if item['field_dimensions'] is defined %}{{field_dimensions}}{% endif %}
-          {% if item['field_details'] is defined %} {{ field_detials }}{% endif %}
-          {% if item['field_version'] is defined %} {{ field_version }} {% endif %}
+          {% if field_physical_details is defined %}{{field_physical_details}}{% endif %}
+          {% if field_dimensions is defined %}{{field_dimensions}}{% endif %}
+          {% if field_details is defined %} {{ field_detials }}{% endif %}
+          {% if field_version is defined %} {{ field_version }} {% endif %}
         </extent>
       </physicalDescription>
 
@@ -119,38 +119,38 @@
       <abstract>{{ field_abstract }} </abstract>
 
       {# Table of Contents #}
-      {% if item['field_table_of_contents'] is defined %}
+      {% if field_table_of_contents is defined %}
       <tableofContents>{{ field_table_of_contents }}</tableofContents>
       {% endif %}
 
 
       {# Notes #}
-      {% if item['field_rights_statement'] is defined %}
+      {% if field_rights_statement is defined %}
       <note type="rights">{{ field_rights_statement }}</note>
       {% endif %}
-      {% if item['field_note'] is defined %}
+      {% if field_note is defined %}
       <note>{{ field_note }}</note>
       {% endif %}
-      {% if item['field_internal_note'] is defined %}
+      {% if field_internal_note is defined %}
       <note type="internal">{{ field_internal_note }}</note>
       {% endif %}
 
 
       {# Geographic Subjects #}
-      {% if item['field_geographic_code'] is defined %}
+      {% if field_geographic_code is defined %}
       <subject>
         <geographicCode authority="marcgac">{{ field_geographic_code }}</geographicCode>
       </subject>
       {% endif %}
       <subject>
         <cartographics>
-          {% if item['field_scale'] is defined %}
+          {% if field_scale is defined %}
           <scale>{{ field_scale }}</scale>
           {% endif %}
-          {% if item['field_projection'] is defined %}
+          {% if field_projection is defined %}
           <projection>{{ field_projection }}</projection>
           {% endif %}
-          {% if item['field_bounding_box'] is defined %}
+          {% if field_bounding_box is defined %}
           <coordinates>{{ field_bounding_box }}</coordinates>
           {% endif %}
         </cartographics>
@@ -170,27 +170,27 @@
 
         {# Identifiers #}
         <identifier type="local">{{ field_local_identifier }}</identifier>
-        {% if item['field_url'] is defined %}
+        {% if field_url is defined %}
         <location>
           <url> {{ field_url}} </url>
         </location>
         {% endif %}
-        {% if item['field_lccn'] is defined %}
+        {% if field_lccn is defined %}
         <identifier type="lccn">{{ field_lccn }}</identifier>
         {% endif %}
-        {% if item['field_isbn'] is defined %}
+        {% if field_isbn is defined %}
         <identifier type="isbn">{{ field_isbn }}</identifier>
         {% endif %}
-        {% if item['field_issn'] is defined %}
+        {% if field_issn is defined %}
         <identifier type="issn">{{ field_issn }}</identifier>
         {% endif %}
-        {% if item['field_oclc_number'] is defined%}
+        {% if field_oclc_number is defined%}
         <identifier type="oclc">{{ field_oclc_number }}</identifier>
         {% endif %}
 
         {# Related Items #}
         {% for rel in item['field_related_item'] %}
-        {% if item['field_related_item'] is defined %}
+        {% if field_related_item is defined %}
         <relatedItem>
           <titleInfo>
             <title>{{ field_related_item_title }}</title>
@@ -199,6 +199,7 @@
             <url>{{ field_related_item_link }} </url>
           </location>
         </relatedItem>
+        {% endif %}
         {% endfor %}
 
         {# Record Info #}
