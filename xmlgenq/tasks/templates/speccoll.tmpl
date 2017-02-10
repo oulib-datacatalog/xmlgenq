@@ -185,12 +185,12 @@
         {% if field_issn is defined %}
         <identifier type="issn">{{ field_issn }}</identifier>
         {% endif %}
-        {% if field_oclc_number is defined%}
+        {% if field_oclc_number is defined %}
         <identifier type="oclc">{{ field_oclc_number }}</identifier>
         {% endif %}
 
         {# Related Items #}
-        {% for rel field_related_item] %}
+        {% for rel field_related_item %}
         {% if field_related_item is defined %}
         <relatedItem>
           <titleInfo>
