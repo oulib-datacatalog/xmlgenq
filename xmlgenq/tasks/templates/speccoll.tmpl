@@ -190,8 +190,8 @@
         {% endif %}
 
         {# Related Items #}
-        {% for rel field_related_item %}
         {% if field_related_item is defined %}
+        {% for rel field_related_item %}
         <relatedItem>
           <titleInfo>
             <title>{{ field_related_item_title }}</title>
@@ -200,8 +200,8 @@
             <url>{{ field_related_item_link }} </url>
           </location>
         </relatedItem>
-        {% endif %}
         {% endfor %}
+        {% endif %}
 
         {# Record Info #}
         <recordInfo>
@@ -215,6 +215,3 @@
 
    </mods>
 </modsCollection>
-
-
-<data>{"title":"","typeResource":"","note":[],"subject"}</data>
