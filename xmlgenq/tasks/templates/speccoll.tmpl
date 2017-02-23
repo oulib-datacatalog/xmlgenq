@@ -191,7 +191,7 @@
 
         {# Related Items #}
         {% if field_related_item is defined %}
-        {% for rel field_related_item %}
+        {% for rel in field_related_item %}
         <relatedItem>
           <titleInfo>
             <title>{{ field_related_item_title }}</title>
