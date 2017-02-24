@@ -158,12 +158,12 @@
       <subject>
 
         {# Other Subjects #}
-        {% for subject in item['field_subjects'] %}
+        {% for subject in field_subjects %}
         <subject authority="lcsh">
           <topic>{{ field_subjects }}</topic>
         </subject>
         {% endfor %}
-        {% for subject in item['field_keyword'] %}
+        {% for subject in field_keyword %}
         <subject>
           <topic>{{ field_keyword }}</topic>
         </subject>
