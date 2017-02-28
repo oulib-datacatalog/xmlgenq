@@ -77,7 +77,6 @@
         <place>
           <placeTerm type="text"> {{ field_place_term }} </placeTerm>
         </place>
-        {% endif %}
         {% if field_publisher is defined %}
         <publisher>{{ field_publisher }}</publisher>
         {% endif %}
@@ -91,6 +90,7 @@
         <issuance>{{ field_issuance }}</issuance>
         {% endif %}
       </originInfo>
+      {% endif %}
 
       {# Type Of Resource #}
       <typeOfResource>{{ field_resource_type}}</typeOfResource>
