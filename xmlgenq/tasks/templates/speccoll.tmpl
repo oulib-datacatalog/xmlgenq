@@ -19,7 +19,7 @@
     <titleInfo type ="alternative">
     {% if field_alternative is defined %}
       {% for altitem in field_alternative %}
-        <title>{{ field_alternative }}</title>
+        <title>{{ altitem }}</title>
       {% endfor %}
     {% endif %}
     </titleInfo>
@@ -67,7 +67,7 @@
       <originInfo eventType = "creation">
         <place>
           {% for place in field_origin_info %}
-          <placeTerm type="text">{{ field_origin_info }}</placeTerm>
+          <placeTerm type="text">{{ place }}</placeTerm>
           {% endfor %}
         </place>
         <dateCreated>{{ field_date_created }}</dateCreated>
@@ -112,7 +112,7 @@
       {# Language #}
       <language>
         {% for lang in field_language %}
-        <languageTerm type= "text">{{ field_language }}</languageTerm>
+        <languageTerm type= "text">{{ lang }}</languageTerm>
         {% endfor %}
       </language>
 
@@ -160,12 +160,12 @@
         {# Other Subjects #}
         {% for subject in field_subjects %}
         <subject authority="lcsh">
-          <topic>{{ field_subjects }}</topic>
+          <topic>{{ subject }}</topic>
         </subject>
         {% endfor %}
-        {% for subject in field_keyword %}
+        {% for keyword in field_keyword %}
         <subject>
-          <topic>{{ field_keyword }}</topic>
+          <topic>{{ keyword }}</topic>
         </subject>
         {% endfor %}
 
@@ -207,7 +207,7 @@
         <recordInfo>
           <recordCreationDate>{{ field_date_record_created}}</recordCreationDate>
           {% for change in field_date_record_changed %}
-          <recordChangeDate>{{ field_date_record_changed }}</recordChangeDate>
+          <recordChangeDate>{{ change }}</recordChangeDate>
           {% endfor %}
         </recordInfo>
 
