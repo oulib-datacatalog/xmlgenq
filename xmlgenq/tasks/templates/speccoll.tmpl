@@ -14,15 +14,15 @@
     {% if field_uniform is defined %}
     <titleInfo type="uniform">
        <title>{{ field_uniform }}</title>
-    {% endif %}
     </titleInfo>
+    {% endif %}
     {% if field_alternative is defined %}
     <titleInfo type ="alternative">
       {% for altitem in field_alternative %}
         <title>{{ altitem }}</title>
       {% endfor %}
-    {% endif %}
     </titleInfo>
+    {% endif %}
 
 
     {# Name/Creator Info #}
