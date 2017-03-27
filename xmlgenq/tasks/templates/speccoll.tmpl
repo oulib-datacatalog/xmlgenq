@@ -6,7 +6,7 @@
     {# Title Info #}
 
     <titleInfo>
-      <title>{{ title }}</title>
+      <title>{{ field_title }}</title>
     {% if field_subtitle is defined %}
       <subtitle>{{ field_subtitle }}</subtitle>
     {% endif %}
@@ -16,7 +16,7 @@
        <title>{{ field_uniform }}</title>
     </titleInfo>
     {% endif %}
-    {% if field_alternative is defined %}
+    {% if field_alternate is defined %}
     <titleInfo type ="alternative">
       {% for altitem in field_alternative %}
         <title>{{ altitem }}</title>
