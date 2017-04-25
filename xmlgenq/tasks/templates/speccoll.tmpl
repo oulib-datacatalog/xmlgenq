@@ -6,7 +6,7 @@
     {# Title Info #}
 
     <titleInfo>
-      <title>{{ title }}</title>
+      <title>{{ field_title }}</title>
     {% if field_subtitle is defined %}
       <subtitle>{{ field_subtitle }}</subtitle>
     {% endif %}
@@ -38,20 +38,20 @@
       {% endif %}
       {% if field_creator_person_local is defined %}
       <name authority ="local" type = "personal">
-        <namePart>{{ field_creator_local_ }}</namePart>
+        <namePart>{{ field_creator_local }}</namePart>
         <role>
           <roleTerm type="text">{{ field_creator_role }}</roleTerm>
         </role>
       </name>
       {% endif %}
-      {% if field_creator_corporate_name_lcnaf_ is defined %}
+      {% if field_creator_corporate_name_lcnaf is defined %}
       <name authority = "lcnaf" type="corporate">
-        <namePart>{{ field_creator_corporate_name_lcnaf_ }}</namePart>
+        <namePart>{{ field_creator_corporate_name_lcnaf }}</namePart>
       </name>
       {% endif %}
-      {% if field_creator_corporate_name_local_ is defined %}
+      {% if field_creator_corporate_name_local is defined %}
       <name authority = "lcnaf" type="corporate">
-        <namePart>{{ field_creator_corporate_name_local_ }}</namePart>
+        <namePart>{{ field_creator_corporate_name_local }}</namePart>
       </name>
       {% endif %}
       {% if field_conference_name is defined %}
@@ -81,7 +81,7 @@
         <publisher>{{ field_publisher }}</publisher>
         {% endif %}
         {% if field_date_published is defined %}
-        <dateIssued>{{ field_date }}</dateIssued>
+        <dateIssued>{{ field_date_published }}</dateIssued>
         {% endif %}
         {% if field_edition is defined %}
         <edition>{{ field_edition }}</edition>
@@ -96,7 +96,7 @@
       <typeOfResource>{{ field_resource_type}}</typeOfResource>
 
       {# Genre #}
-      <genre authority = "marcgt">{{ field_genre }}</genre>
+      <genre>{{ field_genre }}</genre>
 
       {# Physical Description #}
       <physicalDescription>
@@ -104,15 +104,16 @@
           {{ field_extent }}
           {% if field_physical_details is defined %}{{field_physical_details}}{% endif %}
           {% if field_dimensions is defined %}{{field_dimensions}}{% endif %}
-          {% if field_details is defined %} {{ field_detials }}{% endif %}
+          {% if field_details is defined %} {{ field_details }}{% endif %}
           {% if field_version is defined %} {{ field_version }} {% endif %}
         </extent>
       </physicalDescription>
 
       {# Language #}
       <language>
-        {% for lang in field_language %}
-        <languageTerm type= "text">{{ lang }}</languageTerm>
+        {% for lang in field_languages %}
+        <languageTerm type= "text">{{ title }}</languageTerm>
+        <languageTerm type="code">{{ field_language_code }}</languageTerm>
         {% endfor %}
       </language>
 
@@ -156,14 +157,20 @@
           {% endif %}
         </cartographics>
       </subject>
+      
+      {# Temporal Coverage #}
+      {% if field_date_coverage is defined %}
+      <subject>
+          <temporal>{{ field_data_coverage }}</temporal>
+      </subject>  
 
         {# Other Subjects #}
-        {% for subject in field_subjects %}
+        {% for subject in field_subject %}
         <subject authority="lcsh">
           <topic>{{ subject }}</topic>
         </subject>
         {% endfor %}
-        {% for keyword in field_keyword %}
+        {% for keyword in field_keywords %}
         <subject>
           <topic>{{ keyword }}</topic>
         </subject>
@@ -194,10 +201,10 @@
         {% for rel in field_related_item %}
         <relatedItem>
           <titleInfo>
-            <title>{{ field_related_item_title }}</title>
+            <title>{{ title }}</title>
           </titleInfo>
           <location>
-            <url>{{ field_related_item_link }} </url>
+            <url>{{ url }} </url>
           </location>
         </relatedItem>
         {% endfor %}
