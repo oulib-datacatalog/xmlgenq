@@ -179,9 +179,9 @@
 
         {# Identifiers #}
         <identifier type="local">{{ field_local_identifier }}</identifier>
-        {% if field_url is defined %}
+        {% if field_url != [] %}
         <location>
-          <url> {{ field_url}} </url>
+          <url> {{ field_url["url"]}} </url>
         </location>
         {% endif %}
         {% if field_lccn is defined %}
