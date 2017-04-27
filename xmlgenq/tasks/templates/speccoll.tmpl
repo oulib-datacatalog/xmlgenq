@@ -112,8 +112,8 @@
       {# Language #}
       <language>
         {% for lang in field_languages %}
-        <languageTerm type= "text">{{ lang.title }}</languageTerm>
-        <languageTerm type="code">{{ lang.field_language_codes }}</languageTerm>
+        <languageTerm type= "text">{{ lang["title"] }}</languageTerm>
+        <languageTerm type="code">{{ lang["field_language_codes"] }}</languageTerm>
         {% endfor %}
       </language>
 
@@ -202,10 +202,10 @@
         {% for rel in field_related_item %}
         <relatedItem>
           <titleInfo>
-            <title>{{ rel.title }}</title>
+            <title>{{ rel["title"] }}</title>
           </titleInfo>
           <location>
-            <url>{{ rel.url }} </url>
+            <url>{{ rel["url"] }} </url>
           </location>
         </relatedItem>
         {% endfor %}
