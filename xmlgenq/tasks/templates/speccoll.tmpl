@@ -28,35 +28,35 @@
     {# Name/Creator Info #}
 
     {% for name in field_creator_info %}
-      {% if field_creator_person_lcnaf is defined %}
+      {% if name["field_creator_person_lcnaf"] is defined %}
       <name authority = "lcnaf" type = "personal">
-        <namePart>{{ field_creator_person_lcnaf }}</namePart>
+        <namePart>{{ name["field_creator_person_lcnaf"] }}</namePart>
         <role>
-          <roleTerm type="text">{{ field_creator_role }}</roleTerm>
+          <roleTerm type="text">{{ name["field_creator_role"] }}</roleTerm>
         </role>
       </name>
       {% endif %}
-      {% if field_creator_person_local is defined %}
+      {% if name["field_creator_person_local"] is defined %}
       <name authority ="local" type = "personal">
-        <namePart>{{ field_creator_local }}</namePart>
+        <namePart>{{ name["field_creator_local"] }}</namePart>
         <role>
-          <roleTerm type="text">{{ field_creator_role }}</roleTerm>
+          <roleTerm type="text">{{ name["field_creator_role"] }}</roleTerm>
         </role>
       </name>
       {% endif %}
-      {% if field_creator_corporate_name_lcnaf is defined %}
+      {% if name["field_creator_corporate_name_lcnaf"] is defined %}
       <name authority = "lcnaf" type="corporate">
-        <namePart>{{ field_creator_corporate_name_lcnaf }}</namePart>
+        <namePart>{{ name["field_creator_corporate_name_lcnaf"] }}</namePart>
       </name>
       {% endif %}
-      {% if field_creator_corporate_name_local is defined %}
+      {% if name["field_creator_corporate_name_local"] is defined %}
       <name authority = "lcnaf" type="corporate">
-        <namePart>{{ field_creator_corporate_name_local }}</namePart>
+        <namePart>{{ name["field_creator_corporate_name_local"] }}</namePart>
       </name>
       {% endif %}
-      {% if field_conference_name is defined %}
+      {% if name["field_conference_name"] is defined %}
       <name type ="conference">
-        <namePart>{{ field_conference_name }}</namePart>
+        <namePart>{{ name["field_conference_name"] }}</namePart>
       </name>
       {% endif %}
       {% endfor %}
