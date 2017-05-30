@@ -143,12 +143,12 @@
       </physicalDescription>
 
       {# Language #}
+      {% for lang in field_languages %}
       <language>
-        {% for lang in field_languages %}
         <languageTerm type= "text">{{ lang["title"] }}</languageTerm>
         <languageTerm type="code">{{ lang["field_language_codes"] }}</languageTerm>
-        {% endfor %}
       </language>
+      {% endfor %}
 
       {# Abstract #}
       <abstract>{{ field_abstract }} </abstract>
