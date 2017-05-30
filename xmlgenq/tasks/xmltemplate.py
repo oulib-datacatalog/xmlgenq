@@ -34,7 +34,10 @@ def metadataTemplateCreation(data,templatename="maps.tmpl",outname=None):
     template = template = templateEnv.get_template("templates/{0}".format(templatename))
     outputXML = template.render(data)
     if not outname:
-        outname="{0}.xml".format(templatename.split('.')[0])
+        if "field_local_identifier" in data:
+            outname = "{0}.xml".format(data["field_local_identifier"].replace(" ","_"))
+        else:
+            outname="{0}.xml".format(templatename.split('.')[0])
     with open(os.path.join(resultDir,outname),'w') as out:
         out.write(outputXML)
-    return "{0}/oulib_tasks/{1}".format(hostname,task_id)
+    return "{0}/oulib_tasks/{1}/{2}".format(hostname,task_id,outname)
