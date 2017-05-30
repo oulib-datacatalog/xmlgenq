@@ -9,7 +9,7 @@
     </relatedItem>
     
     {% if field_whc_manuscript_collections is defined %}
-    <relatedItem>
+    <relatedItem type="host">
       <titleInfo>{{field_whc_manuscript_collections["title"]}</titleInfo>
       <abstract>{{field_whc_manuscript_collections["field_abstract"]}}</abstract>
       <subject>
@@ -23,7 +23,7 @@
     </relatedItem>
 
     {% if field_whc_photo_collections is defined %}
-    <relatedItem>
+    <relatedItem type="host">
       <titleInfo>{{field_whc_photo_collections["title"]}</titleInfo>
       <abstract>{{field_whc_photo_collections["field_abstract"]}}</abstract>
       <subject>
