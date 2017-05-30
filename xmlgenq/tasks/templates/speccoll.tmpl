@@ -2,6 +2,39 @@
 <modsCollection xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-6.xsd" xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <mods version="3.6">
 
+    {# Collection Info #}
+    
+    <relatedItem type="host">
+      <titleInfo>{{field_special_collection}}</titleInfo>
+    </relatedItem>
+    
+    {% if field_whc_manuscript_collections is defined %}
+    <relatedItem>
+      <titleInfo>{{field_whc_manuscript_collections["title"]}</titleInfo>
+      <abstract>{{field_whc_manuscript_collections["field_abstract"]}}</abstract>
+      <subject>
+          <temporal>{{ field_whc_manuscript_collections["field_date_coverage"] }}</temporal>
+      </subject>
+      <physicalDescription>
+        <extent>{{field_whc_manuscript_collections["field_extent"]}}</extent>
+      </physicalDescription>  
+      <typeOfResource>{{ field_whc_manuscript_collections["field_type"]}}</typeOfResource>
+      <identifier type="local">{{ field_whc_manuscript_collections["field_collection_id"] }}</identifier>
+    </relatedItem>
+
+    {% if field_whc_photo_collections is defined %}
+    <relatedItem>
+      <titleInfo>{{field_whc_photo_collections["title"]}</titleInfo>
+      <abstract>{{field_whc_photo_collections["field_abstract"]}}</abstract>
+      <subject>
+          <temporal>{{field_whc_photo_collections["field_date_coverage"]}}</temporal>
+      </subject>
+      <physicalDescription>
+        <extent>{{field_whc_photo_collections["field_extent"]}}</extent>
+      </physicalDescription>  
+      <typeOfResource>{{ field_whc_photo_collections["field_type"]}}</typeOfResource>
+      <identifier type="local">{{field_whc_photo_collections["field_collection_id"]}}</identifier>
+    </relatedItem>
 
     {# Title Info #}
 
