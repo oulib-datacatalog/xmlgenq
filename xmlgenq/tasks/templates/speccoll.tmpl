@@ -243,6 +243,14 @@
         </relatedItem>
         {% endfor %}
         {% endif %}
+        
+        {% if field_series is defined %}
+        <relatedItem type="series">
+          <titleInfo>
+            <title>{{field_series}}</title>
+          </titleInfo>
+        </relatedItem>  
+        {% endif %}
 
         {# Record Info #}
         <recordInfo>
