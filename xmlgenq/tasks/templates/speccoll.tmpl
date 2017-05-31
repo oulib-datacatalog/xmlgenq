@@ -21,6 +21,7 @@
       <typeOfResource>{{ field_whc_manuscript_collections["field_type"]}}</typeOfResource>
       <identifier type="local">{{ field_whc_manuscript_collections["field_collection_id"] }}</identifier>
     </relatedItem>
+    {%endif %}
 
     {% if field_whc_photo_collections is defined %}
     <relatedItem type="host">
@@ -35,6 +36,7 @@
       <typeOfResource>{{ field_whc_photo_collections["field_type"]}}</typeOfResource>
       <identifier type="local">{{field_whc_photo_collections["field_collection_id"]}}</identifier>
     </relatedItem>
+    {%endif%}
 
     {# Title Info #}
 
