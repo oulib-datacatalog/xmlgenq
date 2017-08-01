@@ -17,8 +17,10 @@
       </subject>
       <physicalDescription>
         <extent>{{field_whc_manuscript_collections["field_extent"]}}</extent>
-      </physicalDescription>  
-      <typeOfResource>{{ field_whc_manuscript_collections["field_type"]}}</typeOfResource>
+      </physicalDescription> 
+      {% for type in field_type %} 
+      <typeOfResource>{{ field_whc_manuscript_collections["type"]}}</typeOfResource>
+      {% endfor %}
       <identifier type="local">{{ field_whc_manuscript_collections["field_collection_id"] }}</identifier>
     </relatedItem>
     {%endif %}
@@ -33,7 +35,9 @@
       <physicalDescription>
         <extent>{{field_whc_photo_collections["field_extent"]}}</extent>
       </physicalDescription>  
-      <typeOfResource>{{ field_whc_photo_collections["field_type"]}}</typeOfResource>
+      {% for type in field_type %}
+      <typeOfResource>{{ field_whc_photo_collections["type"]}}</typeOfResource>
+      {% endfor %}
       <identifier type="local">{{field_whc_photo_collections["field_collection_id"]}}</identifier>
     </relatedItem>
     {%endif%}
