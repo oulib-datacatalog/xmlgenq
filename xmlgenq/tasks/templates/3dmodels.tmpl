@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modsCollection xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-6.xsd" xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <mods version="3.6">
+
+
+    {# Title Info #}
+
+    <titleInfo>
+      <title>{{ field_title }}</title>
+
+    {% if field_subtitle is defined %}
+      <subtitle>{{ field_subtitle }}</subtitle>
+    {% endif %}
+    </titleInfo>
+
+    {# Collection/Project Name #}
+
+    {% if field_collection_project_name is defined %}
+    <relatedItem type="host">
+      <titleInfo>{{ field_collection_project_name }}</titleInfo>
+    </relatedItem>
+    {% endif %}
+
+    {% if field_contributing_agency is defined %}
+    <relatedItem type="host">
+      <titleInfo>{{ field_contributing_agency }}</titleInfo>
+    </relatedItem>
+    {% endif %}
+
+    {# Name/Creator Info #}
+
+    {% for name in field_creator_info %}
+      {% if name["field_creator_person_lcnaf"] is defined %}
+      <name authority = "lcnaf" type = "personal">
+        <namePart>{{ name["field_creator_person_lcnaf"] }}</namePart>
+        <role>
+          <roleTerm type="text">{{ name["field_creator_role"] }}</roleTerm>
+        </role>
+      </name>
+      {% endif %}
+      {% if name["field_creator_person_local"] is defined %}
+      <name authority ="local" type = "personal">
+        <namePart>{{ name["field_creator_local"] }}</namePart>
+        <role>
+          <roleTerm type="text">{{ name["field_creator_role"] }}</roleTerm>
+        </role>
+      </name>
+      {% endif %}
+      {% if name["field_creator_corporate_name_lcnaf"] is defined %}
+      <name authority = "lcnaf" type="corporate">
+        <namePart>{{ name["field_creator_corporate_name_lcnaf"] }}</namePart>
+      </name>
+      {% endif %}
+      {% if name["field_creator_corporate_name_local"] is defined %}
+      <name authority = "lcnaf" type="corporate">
+        <namePart>{{ name["field_creator_corporate_name_local"] }}</namePart>
+      </name>
+      {% endif %}
+      {% if name["field_conference_name"] is defined %}
+      <name type ="conference">
+        <namePart>{{ name["field_conference_name"] }}</namePart>
+      </name>
+      {% endif %}
+      {% endfor %}
+
+
+      {# Origin/Publication Info #}
+
+      <originInfo eventType = "creation">
+        <place>
+          {% for place in field_origin_info %}
+          <placeTerm type="text">{{ place }}</placeTerm>
+          {% endfor %}
+        </place>
+        <dateCreated>{{ field_date_created }}</dateCreated>
+      </originInfo>
+
+      {# Type Of Resource #}
+      <typeOfResource>{{ field_resource_type}}</typeOfResource>
+
+      {# Genre #}
+      <genre>{{ field_genre_3d }}</genre>
+
+      {# Physical Description #}
+      <physicalDescription>
+        <extent>{{ field_extent }}</extent>
+        {% if field_3d_production_method is defined %}
+        <form type="technique">{{ field_3d_production_method }}</form>
+        {% endif %}
+        {% if field_type_of_3d_model is defined %}
+        <form type="3dType">{{ field_type_of_3d_model}}<form>
+        {% endif %}
+        {% if field_model_orientation is defined %}
+        <form type="up_axis">{{ field_model_orientation }}</form>
+        {% endif %}
+        {% if field_unit_of_measurement is defined %}
+        <form type="unitName">{{ field_unit_of_measurement }}</form>
+        {% endif %}
+        {% if field_scale is defined %}
+        <form type="meter">{{ field_scale }}</form>
+        {% endif %}
+        {% if field_file_formats is defined %}
+        <internetMediaType>{{ field_file_formats }}</internetMediaType>
+        {% endif %}
+      </physicalDescription>
+
+      {# Language #}
+      {% for lang in field_languages %}
+      <language>
+        <languageTerm type= "text">{{ lang["title"] }}</languageTerm>
+        <languageTerm type="code">{{ lang["field_language_codes"] }}</languageTerm>
+      </language>
+      {% endfor %}
+
+      {# Abstract #}
+      {% if field_abstract is define %}
+      <abstract>{{ field_abstract }} </abstract>
+      {% endif %}
+      {# Capture Metadata #}
+      <extension>
+      {% if field_capture_conditions is defined %}
+        <ou3d:captureConditions>{{ field_capture_conditions }}</ou3d:captureConditions>
+      {% endif %}
+      {% if field_camera_details is defined %}
+        <ou3D:cameraDetail>{{ field_capture_conditions }}</ou3D:cameraDetail>
+      {% endif %}
+      {% if field_operator_name is defined %}
+        <ou3d:operatorName>{{ field_operator_name }}</ou3d:operatorName>
+      {% endif %}
+      {% if field_camera_iso is defined %}
+        <ou3d:cameraISO>{{ field_camera_iso }}</ou3d:cameraISO>
+      {% endif %}
+      {% if field_camera_lens is defined %}
+        <ou3d:cameraLens>{{ field_camera_lens }}</ou3d:cameraLens>
+      {% endif %}
+      {% if field_camera_resolution is defined %}
+        <ou3d:cameraResolution>{{ field_camera_resolution }}</ou3d:cameraResolution>
+      {% endif %}
+      {% if field_scale_target_used is defined %}
+        <ou3d:scaleTarget>{{ field_scale_target_used }}</ou3d:scaleTarget>
+      {% endif %}
+      {% if field_turntable_used_ is defined %}
+        <ou3d:turnTable>{{ field_turntable_used_ }}</ou3d:turnTable>
+      {% endif %}
+      {% if field_rgb_date_capture_ is defined %}
+        <ou3d:RGBcapture>{{ field_rgb_date_capture_ }}</ou3d:RGBcapture>
+      {% endif %}
+      {% if field_lighting_conditions is defined %}
+        <ou3d:lighting>{{ field_lighting_conditions }}</ou3d:lighting>
+      {% endif %}
+      {% if field_estimated_data_resolution is defined %}
+        <ou3d:dataResolution>{{ field_estimated_data_resolution }}</ou3d:dataResolution>
+      {% endif %}
+      {% if field_total_numbers_of_scans is defined %}
+        <ou3d:totalScans>{{ field_total_numbers_of_scans }}</ou3d:totalScans>>
+      {% endif %}
+      {% if field_number_of_points is defined %}
+        <ou3d:totalPoints>{{ field_number_of_points }}</ou3d:totalPoints>
+      {% endif %}
+      {% if field_number_of_polygons is defined %}
+        <ou3d:totalPolygons>{{ field_number_of_polygons }}</ou3d:totalPolygons>
+      {% endif %}
+      {% if field_use_case is defined %}
+        <ou3d:useCase>{{ field_use_case }}</ou3d:useCase>
+      {% endif %}
+      {% if field_course is defined %}
+        <ou3d:courseName>{{ field_course_name }}</ou3D:courseName>
+      {% endif %}
+      {% if field_semester is defined %}
+        <ou3d:semester>{{ field_semester }}
+      {% endif %}
+
+      </extension>
+
+      {# Notes #}
+      {% if field_rights_statement is defined %}
+      <note type="rights">{{ field_rights_statement }}</note>
+      {% endif %}
+      {% if field_note is defined %}
+      <note>{{ field_note }}</note>
+      {% endif %}
+      {% if field_internal_note is defined %}
+      <note type="internal">{{ field_internal_note }}</note>
+      {% endif %}
+
+
+      {# Geographic Subjects #}
+      {% if field_geographic_code is defined %}
+      <subject>
+        <geographicCode authority="marcgac">{{ field_geographic_code }}</geographicCode>
+      </subject>
+      {% endif %}
+      <subject>
+        <cartographics>
+          {% if field_scale is defined %}
+          <scale>{{ field_scale }}</scale>
+          {% endif %}
+          {% if field_latitude is defined %}
+          <coordinates>
+            <latitude>{{ field_latitude }}</latitude>
+            <longitude>{{ field_longitude }}</longitude>
+          </coordinates>
+          {% endif %}
+        </cartographics>
+      </subject>
+
+      {# Temporal Coverage #}
+      {% if field_date_coverage is defined %}
+      <subject>
+          <temporal>{{ field_date_coverage }}</temporal>
+      </subject>
+      {% endif %}
+
+      {# Other Subjects #}
+      {% for subject in field_subject %}
+      <subject authority="lcsh">
+        <topic>{{ subject }}</topic>
+      </subject>
+      {% endfor %}
+      {% for keyword in field_keywords %}
+      <subject>
+        <topic>{{ keyword }}</topic>
+      </subject>
+      {% endfor %}
+
+      {# Identifiers #}
+      <identifier type="local">{{ field_local_identifier }}</identifier>
+      {% if field_url != [] %}
+      <location>
+        <url> {{ field_url["url"]}} </url>
+      </location>
+      {% endif %}
+      {% if field_lccn is defined %}
+      <identifier type="lccn">{{ field_lccn }}</identifier>
+      {% endif %}
+      {% if field_isbn is defined %}
+      <identifier type="isbn">{{ field_isbn }}</identifier>
+      {% endif %}
+      {% if field_issn is defined %}
+      <identifier type="issn">{{ field_issn }}</identifier>
+      {% endif %}
+      {% if field_oclc_number is defined %}
+      <identifier type="oclc">{{ field_oclc_number }}</identifier>
+      {% endif %}
+
+      {# Related Items #}
+      {% if field_related_item is defined %}
+      {% for rel in field_related_item %}
+      <relatedItem>
+        <titleInfo>
+          <title>{{ rel["title"] }}</title>
+        </titleInfo>
+        <location>
+          <url>{{ rel["url"] }} </url>
+        </location>
+      </relatedItem>
+      {% endfor %}
+      {% endif %}
+
+      {# Record Info #}
+      <recordInfo>
+        <recordCreationDate>{{ field_date_record_created }}</recordCreationDate>
+        {% for change in field_date_record_changed %}
+        <recordChangeDate>{{ change }}</recordChangeDate>
+        {% endfor %}
+      </recordInfo>
+
+
+   </mods>
+</modsCollection>
