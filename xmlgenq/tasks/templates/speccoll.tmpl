@@ -223,6 +223,9 @@
           {% if field_bounding_box is defined %}
           <coordinates>{{ field_bounding_box }}</coordinates>
           {% endif %}
+          {% if field_lat_long is defined %}
+          <coordinates>{{ field_lat_long}}</coordinates>
+          {% endif %}
         </cartographics>
       </subject>
       
