@@ -30,45 +30,73 @@
     {# Name/Creator Info #}
 
     {% for name in field_creator_info %}
-      {% if name["field_creator_person_lcnaf"] is defined %}
+      {% if name["field_creator_type"] == "Personal Name" and name["field_creator_source"] == "lcnaf" %}
       <name authority = "lcnaf" type = "personal">
-        <namePart>{{ name["field_creator_person_lcnaf"] }}</namePart>
+        <namePart>{{ name["field_lcnaf_creator"] }}</namePart>
         <role>
           <roleTerm type="text">{{ name["field_creator_role"] }}</roleTerm>
         </role>
       </name>
       {% endif %}
-      {% if name["field_creator_person_local"] is defined %}
+      {% if name["field_creator_type"] == "Personal Name" and name["field_creator_source"] == "local" %}
       <name authority ="local" type = "personal">
-        <namePart>{{ name["field_creator_local"] }}</namePart>
+        <namePart>{{ name["field_local_creator"] }}</namePart>
         <role>
           <roleTerm type="text">{{ name["field_creator_role"] }}</roleTerm>
         </role>
       </name>
       {% endif %}
-      {% if name["field_creator_corporate_name_lcnaf"] is defined %}
+      {% if name["field_creator_type"] == "Corporate" and name["field_creator_source"] == "lcanf" %}
       <name authority = "lcnaf" type="corporate">
-        <namePart>{{ name["field_creator_corporate_name_lcnaf"] }}</namePart>
+        <namePart>{{ name["field_lcnaf_creator"] }}</namePart>
+        <role>
+          <roleTerm type="text">{{ name["field_creator_role"] }}</roleTerm>
+        </role>
       </name>
       {% endif %}
-      {% if name["field_creator_corporate_name_local"] is defined %}
+      {% if name["field_creator_type"] == "Corporate" and name["field_creator_source"] == "local" %}
       <name authority = "lcnaf" type="corporate">
-        <namePart>{{ name["field_creator_corporate_name_local"] }}</namePart>
+        <namePart>{{ name["field_local_creator"] }}</namePart>
+        <role>
+          <roleTerm type="text">{{ name["field_creator_role"] }}</roleTerm>
+        </role>
       </name>
       {% endif %}
-      {% if name["field_conference_name"] is defined %}
+      {% if name["field_creator_type"] == "Conference" and name["field_creator_source"] == "lcnaf" %}
       <name type ="conference">
-        <namePart>{{ name["field_conference_name"] }}</namePart>
+        <namePart>{{ name["field_lcnaf_creator"] }}</namePart>
+        <role>
+          <roleTerm type="text">{{ name["field_creator_role"] }}</roleTerm>
+        </role>
       </name>
+      {% endif %}
+      {% if name["field_creator_type"] == "Conference" and name["field_creator_source"] == "local" %}
+      <name type ="conference">
+        <namePart>{{ name["field_local_creator"] }}</namePart>
+        <role>
+          <roleTerm type="text">{{ name["field_creator_role"] }}</roleTerm>
+        </role>
+      </name>
+      {% if name["field_creator_type"] == "Conference" and name["field_creator_source"] == "lcnaf" %}
+      <name type ="conference">
+        <namePart>{{ name["field_lcnaf_creator"] }}</namePart>
+        <role>
+          <roleTerm type="text">{{ name["field_creator_role"] }}</roleTerm>
+        </role>
+      </name>
+      {% endif %}
+      {% if name["field_creator_type"] == "Unknown" %}
+        <namePart>{{ "unknown" }}</namePart>
+      </name>
+      {% endif %}
       {% endif %}
       {% endfor %}
-
 
       {# Origin/Publication Info #}
 
       <originInfo eventType = "creation">
         <place>
-          {% for place in field_origin_info %}
+          {% for place in field_place_of_origin %}
           <placeTerm type="text">{{ place }}</placeTerm>
           {% endfor %}
         </place>
