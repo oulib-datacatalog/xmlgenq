@@ -23,6 +23,48 @@
       {% endfor %}
       <identifier type="local">{{ field_whc_manuscript_collections["field_collection_id"] }}</identifier>
     </relatedItem>
+    
+    {# Location Info of WHC Photo Collections#}
+    <location>
+      <physicalLocation>
+        {{"Western History Collections, " ~ field_whc_manuscript_collections["title"] ~ " Box " ~field_box_number ~ ", Folder " ~ field_folder_number}}
+      </physicalLocation>
+    </location>
+    
+
+    <identifier type="local">
+      {% if field_box_number|length == 1 and field_folder_number|length == 1 %}
+        {{ "whc_" ~ field_whc_manuscript_collections["field_short_name"] ~ "_00" ~ field_box_number ~ "_00" ~ field_folder_number }}
+      {% endif %}
+      {% if field_box_number|length == 2 and field_folder_number|length == 1 %}
+        {{ "whc_"~ field_whc_manuscript_collections["field_short_name"] ~ "_0" ~ field_box_number ~ "_00" ~ field_folder_number }}
+      {% endif %}
+      {% if field_box_number|length == 3 and field_folder_number|length == 1 %}
+        {{ "whc_"~ field_whc_manuscript_collections["field_short_name"] ~ "_" ~field_box_number ~ "_00" ~ field_folder_number }}
+      {% endif %}
+      
+      {% if field_box_number|length == 1 and field_folder_number|length == 2 %}
+        {{ "whc_" ~ field_whc_manuscript_collections["field_short_name"] ~ "_00" ~ field_box_number ~ "_0" ~ field_folder_number }}
+      {% endif %}
+      {% if field_box_number|length == 2 and field_folder_number|length == 2 %}
+        {{ "whc_"~ field_whc_manuscript_collections["field_short_name"] ~ "_0" ~ field_box_number ~ "_0" ~ field_folder_number }}
+      {% endif %}
+      {% if field_box_number|length == 3 and field_folder_number|length == 2 %}
+        {{ "whc_"~ field_whc_manuscript_collections["field_short_name"] ~ "_" ~field_box_number ~ "_0" ~ field_folder_number }}
+      {% endif %}
+      
+      {% if field_box_number|length == 1 and field_folder_number|length == 3 %}
+        {{ "whc_" ~ field_whc_manuscript_collections["field_short_name"] ~ "_00" ~ field_box_number ~ "_" ~ field_folder_number }}
+      {% endif %}
+      {% if field_box_number|length == 2 and field_folder_number|length == 3 %}
+        {{ "whc_"~ field_whc_manuscript_collections["field_short_name"] ~ "_0" ~ field_box_number ~ "_" ~ field_folder_number }}
+      {% endif %}
+      {% if field_box_number|length == 3 and field_folder_number|length == 3 %}
+        {{ "whc_"~ field_whc_manuscript_collections["field_short_name"] ~ "_" ~field_box_number ~ "_" ~ field_folder_number }}
+      {% endif %}
+    </identifier>
+
+    
     {%endif %}
 
     {% if field_whc_photo_collections is defined %}
@@ -40,6 +82,46 @@
       {% endfor %}
       <identifier type="local">{{field_whc_photo_collections["field_collection_id"]}}</identifier>
     </relatedItem>
+    
+    {# Location Info of WHC Photo Collections#}
+    <location>
+      <physicalLocation>
+        {{"Western History Collections, " ~ field_whc_photo_collections["title"] ~ " Box " ~field_box_number ~ ", Folder " ~ field_folder_number}}
+      </physicalLocation>
+    </location>
+    
+    <identifier type="local">
+      {% if field_box_number|length == 1 and field_folder_number|length == 1 %}
+        {{ "whc_" ~ field_whc_photo_collections["field_short_name"] ~ "_00" ~ field_box_number ~ "_00" ~ field_folder_number }}
+      {% endif %}
+      {% if field_box_number|length == 2 and field_folder_number|length == 1 %}
+        {{ "whc_"~ field_whc_photo_collections["field_short_name"] ~ "_0" ~ field_box_number ~ "_00" ~ field_folder_number }}
+      {% endif %}
+      {% if field_box_number|length == 3 and field_folder_number|length == 1 %}
+        {{ "whc_"~ field_whc_photo_collections["field_short_name"] ~ "_" ~field_box_number ~ "_00" ~ field_folder_number }}
+      {% endif %}
+      
+      {% if field_box_number|length == 1 and field_folder_number|length == 2 %}
+        {{ "whc_" ~ field_whc_photo_collections["field_short_name"] ~ "_00" ~ field_box_number ~ "_0" ~ field_folder_number }}
+      {% endif %}
+      {% if field_box_number|length == 2 and field_folder_number|length == 2 %}
+        {{ "whc_"~ field_whc_photo_collections["field_short_name"] ~ "_0" ~ field_box_number ~ "_0" ~ field_folder_number }}
+      {% endif %}
+      {% if field_box_number|length == 3 and field_folder_number|length == 2 %}
+        {{ "whc_"~ field_whc_photo_collections["field_short_name"] ~ "_" ~field_box_number ~ "_0" ~ field_folder_number }}
+      {% endif %}
+      
+      {% if field_box_number|length == 1 and field_folder_number|length == 3 %}
+        {{ "whc_" ~ field_whc_photo_collections["field_short_name"] ~ "_00" ~ field_box_number ~ "_" ~ field_folder_number }}
+      {% endif %}
+      {% if field_box_number|length == 2 and field_folder_number|length == 3 %}
+        {{ "whc"~ field_whc_photo_collections["field_short_name"] ~ "_0" ~ field_box_number ~ "_" ~ field_folder_number }}
+      {% endif %}
+      {% if field_box_number|length == 3 and field_folder_number|length == 3 %}
+        {{ "whc_"~ field_whc_photo_collections["field_short_name"] ~ "_" ~field_box_number ~ "_" ~ field_folder_number }}
+      {% endif %}
+    </identifier>
+  
     {%endif%}
 
     {# Title Info #}
