@@ -35,14 +35,14 @@
       <identifier type="local">
         {% if field_folder_number is defined and field_box_number is defined and field_item_number is not defined %}
           {{"whc_"~ field_whc_manuscript_collections["field_short_name"] 
-          ~ "_%(folder)03d"|format(folder=field_folder_number|int)
-          ~ "_%(box)03d"|format(box=field_box_number|int)}}
+          ~ "_%(box)03d"|format(box=field_box_number|int)
+          ~ "_%(folder)03d"|format(folder=field_folder_number|int)}}
         {% endif %}
         
         {% if field_folder_number is defined and field_box_number is defined and field_item_number is defined %}
           {{"whc_"~ field_whc_manuscript_collections["field_short_name"] 
-          ~ "_%(folder)03d"|format(folder=field_folder_number|int)
           ~ "_%(box)03d"|format(box=field_box_number|int)
+          ~ "_%(folder)03d"|format(folder=field_folder_number|int)
           ~ "_%(item)04d"|format(item=field_item_number|int)}}
         {% endif %}
       </identifier>
@@ -74,14 +74,14 @@
         <identifier type="local">
           {% if field_folder_number is defined and field_box_number is defined and field_item_number is not defined %}
             {{"whc_"~ field_whc_photo_collections["field_short_name"] 
-            ~ "_%(folder)03d"|format(folder=field_folder_number|int)
-            ~ "_%(box)03d"|format(box=field_box_number|int)}}
+            ~ "_%(box)03d"|format(box=field_box_number|int)
+            ~ "_%(folder)03d"|format(folder=field_folder_number|int)}}
         {% endif %}
         
         {% if field_folder_number is defined and field_box_number is defined and field_item_number is defined %}
           {{"whc_"~ field_whc_photo_collections["field_short_name"] 
-          ~ "_%(folder)03d"|format(folder=field_folder_number|int)
           ~ "_%(box)03d"|format(box=field_box_number|int)
+          ~ "_%(folder)03d"|format(folder=field_folder_number|int)
           ~ "_%(item)04d"|format(item=field_item_number|int)}}
         {% endif %}
       </identifier>
