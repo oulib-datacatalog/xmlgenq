@@ -8,8 +8,7 @@ setup(name='xmlgenq',
       install_requires=[
           'celery==3.1.22',
           'pymongo==3.2.1',
-          'paramiko==1.16.0',
-          'requests==2.9.1',
+          'requests==2.20.0',
           'jinja2',
       ],
      dependency_links=[
