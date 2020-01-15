@@ -1,1 +1,1 @@
-from xmltemplate import *
+from .xmltemplate import *
