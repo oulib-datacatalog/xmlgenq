@@ -6,7 +6,6 @@ setup(name='xmlgenq',
       packages= find_packages(),
       package_data={'xmlgenq':['tasks/templates/*.tmpl','xmlgenq/tasks/templates/*.tmpl']},
       install_requires=[
-          'celery==3.1.22',
           'pymongo==3.2.1',
           'requests==2.20.0',
           'jinja2',
