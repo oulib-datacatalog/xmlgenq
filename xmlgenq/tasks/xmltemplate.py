@@ -8,8 +8,8 @@ import requests,os
 import jinja2
 #from pandas import read_csv
 #Default base directory 
-basedir="/data/web_data/static"
-hostname="https://cc.lib.ou.edu"
+basedir=os.environ.get('CC_STATIC_DIR')
+hostname=os.environ.get('CC_HOSTNAME')
 
 @task()
 def metadataTemplateCreation(data,templatename="maps.tmpl",outname=None):
